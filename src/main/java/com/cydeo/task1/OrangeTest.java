@@ -1,4 +1,4 @@
-package com.cydeo;
+package com.cydeo.task1;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +15,18 @@ public class OrangeTest {
 
 
         OrangeFormatter orangeLambda = orange -> "An orange of " + orange.getWeight() + "g";
+        prettyPrintOrange(inventory,orangeLambda);
 
+        prettyPrintOrange(inventory, orange -> "An orange of " + orange.getWeight() + "g"); // same as line 17, 18
 
+        System.out.println("--------------------");
+
+        OrangeFormatter fancyFormatter = orange -> {
+            String weight = orange.getWeight()>200? "heavy" : "light";
+            return "A " + weight +" "+ orange.getColor() + " orange";
+        };
+
+        prettyPrintOrange(inventory,fancyFormatter);
     }
 
     private static void prettyPrintOrange (List<Orange> inventory, OrangeFormatter formatter){
